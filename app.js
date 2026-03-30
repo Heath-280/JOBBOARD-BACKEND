@@ -9,11 +9,22 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173",
-    methods: ["GET","POST","PUT","DELETE"],
+    origin: function(origin, callback) {
+        const allowedOrigins = [
+            "http://localhost:5173",
+            "https://jobbard-frontend.vercel.app",
+            "https://jobbard-frontend-ircotbzw0-naitik-shahs-projects.vercel.app",
+            process.env.CLIENT_URL
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
-
 
 connectDB();
 
