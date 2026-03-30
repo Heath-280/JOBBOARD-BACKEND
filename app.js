@@ -11,11 +11,11 @@ const app = express();
 app.use(cors({
     origin: function(origin, callback) {
         const allowedOrigins = [
-            "http://localhost:5173",
-            "https://jobbard-frontend.vercel.app",
-            "https://jobbard-frontend-ircotbzw0-naitik-shahs-projects.vercel.app",
-            process.env.CLIENT_URL
-        ];
+    "http://localhost:5173",
+    "https://jobbard-frontend.vercel.app",
+    "https://jobbard-frontend-6g1f.vercel.app",
+    process.env.CLIENT_URL
+];
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
