@@ -1,5 +1,6 @@
 import axios from "axios"
 
+//deployment fix: use environment variable for API URL, fallback to localhost if not set
 const API = axios.create({
     baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000/api", // Fix: use env variable
     withCredentials: true
